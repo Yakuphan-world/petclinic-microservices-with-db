@@ -147,17 +147,17 @@ EOF
   managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"]
 }
 
-resource "aws_iam_instance_profile" "petclinic-master-server-profile-1" {
-  name = "petclinic-master-server-profile-1"
+resource "aws_iam_instance_profile" "petclinic-master-server-profile" {
+  name = "petclinic-master-server-profile"
   role = aws_iam_role.petclinic-master-server-s3-role.name
 }
 
 resource "aws_instance" "kube-master" {
     ami = "ami-053b0d53c279acc90"
     instance_type = "t2.micro"
-    iam_instance_profile = aws_iam_instance_profile.petclinic-master-server-profile-1.name
+    iam_instance_profile = aws_iam_instance_profile.petclinic-master-server-profile.name
     vpc_security_group_ids = [aws_security_group.petclinic-kube-master-sg.id, aws_security_group.petclinic-mutual-sg.id]
-    key_name = "yeni"
+    key_name = "clarus"
     subnet_id = "subnet-0792cfc4a9dea40ab"  # select own subnet_id of us-east-1a
     availability_zone = "us-east-1a"
     tags = {
@@ -173,7 +173,7 @@ resource "aws_instance" "worker-1" {
     ami = "ami-053b0d53c279acc90"
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.petclinic-kube-worker-sg.id, aws_security_group.petclinic-mutual-sg.id]
-    key_name = "yeni"
+    key_name = "clarus"
     subnet_id = "subnet-0792cfc4a9dea40ab"  # select own subnet_id of us-east-1a
     availability_zone = "us-east-1a"
     tags = {
@@ -189,7 +189,7 @@ resource "aws_instance" "worker-2" {
     ami = "ami-053b0d53c279acc90"
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.petclinic-kube-worker-sg.id, aws_security_group.petclinic-mutual-sg.id]
-    key_name = "yeni"
+    key_name = "clarus"
     subnet_id = "subnet-0792cfc4a9dea40ab"  # select own subnet_id of us-east-1a
     availability_zone = "us-east-1a"
     tags = {

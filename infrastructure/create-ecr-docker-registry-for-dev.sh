@@ -1,5 +1,5 @@
-PATH="$PATH:/usr/local/bin"
-APP_REPO_NAME="yakuphan-repo/petclinic-app-dev"
+PATH="$PATH:/usr/bin"
+APP_REPO_NAME="clarusway1-repo/petclinic-app-dev"
 AWS_REGION="us-east-1"
 
 aws ecr describe-repositories --region ${AWS_REGION} --repository-name ${APP_REPO_NAME} || \
